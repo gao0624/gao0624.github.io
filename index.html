@@ -152,6 +152,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-博客的搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/18/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">博客的搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/18/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2021-01-18T12:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>这是我的第一篇博客，我们来一个完整的博客搭建过程。过程中遇见的所有的问题，我们都来一一解决一下。</p>
+<p>1.首先我们先注册一个GitHub账号，进行登录，然后创建GitPage。注册创建过程参考百度，非常的简单。</p>
+<p>2.第二步咱们在本地下载一个GitHub，也是很容易。</p>
+<p>3.然后咱们还需要在安装一个node.js。傻瓜式点击下一步就ok。</p>
+<blockquote>
+<p>上面二三步骤有一个共同的问题就是：下载速度太慢，因为服务器在国外。所以咱们使用淘宝镜像文件在下载，在镜像网址里面下载。镜像网址<code>https://developer.aliyun.com/</code></p>
+</blockquote>
+<hr>
+<p>上面两步非常的容易，然后开始使用npm（因为下载了node.js所以可以使用npm,详细内容就不在阐述）下载hexo框架，咱们使用框架进行博客的搭建。</p>
+<p>1.首先调出咱们的命令终端，咱们使用命令行进行下载。鼠标右键单击桌面，就会出现Git Bsah Here 。ps:在里面就可以进行命令行的输入下载hexo框架了。</p>
+<p>2.先别急着输入命令行<code>npm install -g hexo-cli</code>，因为npm还是在国外的，下载速度太慢了。</p>
+<p>解决方法：<br>首先使用下面的命令行，进行全局的搭建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">注意：--后面没有空格直接registry    就像这样--registry</span><br></pre></td></tr></table></figure>
+<p>需要等待一小会，等待安装完成之后，咱们在进行hexo的下载。输入下面的命令行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>速度会快上很多，但是仍然需要在等一小会。安装完成之后，咱们使用：<code>hexo -v</code>查看安装的hexo框架信息。到此咱们的hexo框架安装成功。然后继续进行。</p>
+<hr>
+<p>咱们继续，上面已经全部完成了相应的环境搭建。下面开始本地项目的创建然后推送到远端的托管平台GitHub 上面去。</p>
+<p>1.首先我们使用hexo框架的命令行 <code>hexo init blog(blog这个名字随便一个文件名字就可以)</code>在本地初始化一个博客项目。</p>
+<blockquote>
+<p>出现问题：可能会出现加载停止的问题，因为服务器在国外，所以速度过慢。如果咱们的项目出现的问题，不要怕把刚才出现问题的项目整个的删除重来就好了。下面咱们来解决一下<br>使用全局的淘宝镜像配置就可以解决了，只需要配置一次就ok了。输入下面的命令行：<code>npm config set registry https://registry.npm.taobao.org</code>执行即可解决问题。（registry后面是有空格的。想这样子registry https）再次重复上面的步骤就可以了，这样就会快上很多。</p>
+</blockquote>
+<p>2.这时候咱们的项目文件就已经创建完成了，cd 进入你刚才创建的文件，然后使用命令行<code>hexo new 随便一个文件名字</code>，会在咱们的<code>\source\_posts</code>路径里面创建一个.md文件。这里面就是咱们的博客内容啦，会自动将.md文件里面的内容进行渲染的。里面的内容编写需要学习markdown的相关的语法内容。</p>
+<hr>
+<p>当你的项目编写完成之后，咱们接下来要进行一些远程的推送，让你的博客变成一个可以让人访问的网站。</p>
+<p>1.首先在GitHub里面新建一个仓库，仓库的名字一定要符合。用户名.github.io的形式，不然就会出错。仓库的创建方法百度可以查找，比我讲的详细。</p>
+<p>2.进行SSH的搭建。首先键入命令行<code>cat ~/.ssh/id_rsa.pub</code>可以查看咱们本地是不是拥有这个安全协议。如果没有的话，咱们在键入命令行<code>ssh-keygen -t rsa -b 4096 -C &quot;这里面是你注册GitHub仓库的邮箱&quot;</code>   然后他会生成这个ssh安全协议。<br>再次键入命令行<code>cat ~/.ssh/id_rsa.pub</code>，这次会出现新的东西，然后你从ssh-rsa开始一直到最后中间长长的一大段全部的复制下来。</p>
+<p>3.打开咱们的前面创建并申请好的GitHub。第一步：<br><img src="en-resource://database/603:0" alt="aee6d1c1e8e75159f39551828ed11de1.jpeg"><br>点击Settings<br>第二步：<br><img src="en-resource://database/605:0" alt="d7a69839b35a6fc85438a649d7308756.png"><br>点击荧光处。<br>第三步：<br><img src="en-resource://database/607:0" alt="27853b17ce5a559a97eb6d14a222e4ad.png"><br>进行绿色按钮处的添加，最后添加成功就ok了。</p>
+<p>4.在文件中安装发布工具<code>npm install hexo-deployer-git --save</code>等待安装完成。</p>
+<p>5.这一步需要咱们修改配置的文件，打开_config.yml文件。手动修改添加下面的内容，就在配置文件的最后一行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"></span><br><span class="line">  type: git</span><br><span class="line"></span><br><span class="line">  repository: 你的GitHub仓库地址，需要git开头的SSH地址。</span><br><span class="line"></span><br><span class="line">  branch: master</span><br><span class="line">  注意：后面都会跟一个空格，不然就出错了，这是.yml文件格式的特点</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+<p>6.修改完成之后，咱们开始远程的推送。首先执行<code>hexo g</code>命令行，等待完成。然后在键入<code>hexo d</code>命令开始推送。可能会让你输入账号密码，你输入就ok了。也可能会失败，会提醒你说who you arexxxxxx之类的东西，说白了就是远程不认识你。别急。咱们来进行配置一下。键入命令行<code>git config --global user.name &quot;你的用户名字&quot;</code>，执行。然后在键入命令，<code>git config --global user.email &quot;注册GitHub邮箱&quot;</code>执行。只要执行一次就ok了，以后就不用在配置了。然后再次执行<code>hexo d</code>的命令行就欧克了。这次就会成功了。然后输入你的仓库网址就可以进行访问了。一个属于你的网站就诞生了。</p>
+<hr>
+<p>最后咱们修改一下博客界面，仍然使用hexo框架，不然就需要你的HTML CSS知识来自己修饰了。还是使用命令行进入咱们的博客文件内，然后键入命令行<code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code>等待下载完成。然后还是进入咱们的_config.yml文件内，将默认的主题修改为  theme: yilia即可。也是在文件的最后位置。然后键入推送的命令行即可。等待一会，你的网页就会变了一个模样。</p>
+<p>这样你的第一个博客就已经诞生了。你已经可以熟练的发布你的博客了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/18/%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
